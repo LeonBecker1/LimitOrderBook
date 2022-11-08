@@ -1,0 +1,5 @@
+﻿We can't add entities to the database, that themself contain n>1 identical entities
+When running unittests in batch, that require the instantiation of a dbcontext, failures will occur.
+When running databasemigrationtests, we need to adjust the key values or else these tests will fail.
+https://stackoverflow.com/questions/70095949/the-instance-of-entity-type-cannot-be-tracked-because-another-instance-with-the
+Zum Fetchen von Entities, die Entities in sich enthalten wird include() benötigt

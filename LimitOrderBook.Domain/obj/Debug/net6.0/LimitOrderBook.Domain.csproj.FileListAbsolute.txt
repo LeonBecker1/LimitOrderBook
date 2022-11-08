@@ -1,0 +1,15 @@
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\bin\Debug\net6.0\LimitOrderBook.Domain.exe
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\bin\Debug\net6.0\LimitOrderBook.Domain.deps.json
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\bin\Debug\net6.0\LimitOrderBook.Domain.runtimeconfig.json
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\bin\Debug\net6.0\LimitOrderBook.Domain.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\bin\Debug\net6.0\LimitOrderBook.Domain.pdb
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\LimitOrderBook.Domain.csproj.AssemblyReference.cache
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\LimitOrderBook.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\LimitOrderBook.Domain.AssemblyInfoInputs.cache
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\LimitOrderBook.Domain.AssemblyInfo.cs
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\LimitOrderBook.Domain.csproj.CoreCompileInputs.cache
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\LimitOrderBook.Domain.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\refint\LimitOrderBook.Domain.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\LimitOrderBook.Domain.pdb
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\LimitOrderBook.Domain.genruntimeconfig.cache
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Domain\obj\Debug\net6.0\ref\LimitOrderBook.Domain.dll

@@ -1,0 +1,103 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.837);
+    font-family: sans-serif;
+    font-size: 1.5em;
+    font-weight: 200;
+}
+
+#register{
+    margin-top: 150px;
+    display: flex;
+    justify-content:baseline;
+    align-items: center;
+    flex-direction: column;
+    background-color: #25252d;
+    width: 400px;
+    height: 500px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.308)
+}
+
+a:link{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.837);
+}
+
+a:visited{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.837);
+}
+
+#submit{
+    padding: 10px;
+    font-size: 1em;
+    background-color: #ff1b4d;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    margin-top: 50px;
+}
+
+#options{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.355);
+    padding-bottom: 10px;
+}
+
+label{
+    color: rgba(255, 255, 255, 0.561);
+    font-size: 0.75em;
+}
+
+div{
+    margin-top: 20px;
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+}
+
+#formfield{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+input{
+    background-color: #25252d;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px #fff solid;
+    color: #fff;
+    font-size: 1em;
+}
+
+#guest{
+    padding: 10px;
+    font-size: 0.8em;
+    font-weight: 200;
+    border: #1bff76 solid 2px;
+    background-color: #25252d;
+    color: #1bff76;
+    margin-top: 50px;
+    cursor: pointer;
+    align-self: baseline;
+    margin-left: 50px;
+}

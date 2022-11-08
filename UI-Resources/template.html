@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="template.css">
+    <title>Document</title>
+</head>
+<body>
+    <button class="navigation"><-</button>
+    <div id="wrapper">
+        <table id="stock">
+            <p>AAPL</p>
+            <thead>
+                <tr>
+                    <th>Price</th>
+                    <th>QTY</th>
+                    <th><div>Total</div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1000.0</td>
+                    <td>20</td>
+                    <td><div id="hmm">20000</div></td>
+                </tr>
+                <tr>
+                    <td>1000.0</td>
+                    <td>20</td>
+                    <td>20000</td>
+                </tr>
+                <tr>
+                    <td>1000.0</td>
+                    <td>20</td>
+                    <td>20000</td>
+                </tr>
+                <tr>
+                    <td>1000.0</td>
+                    <td>20</td>
+                    <td>20000</td>
+                </tr>
+                <tr>
+                    <td>1000.0</td>
+                    <td>20</td>
+                    <td>20000</td>
+                </tr>
+                <tr>
+                    <td>1000.0</td>
+                    <td>20</td>
+                    <td>20000</td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="profile">
+            <thead class="head">
+                <p>Balance: 69.420,00</p>
+                <tr>
+                    <th>Stock</th>
+                    <th>QTY</th>
+                    <th>Total</th>
+                    <th>Relative</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Amd</td>
+                    <td>105</td>
+                    <td>30000</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>Amd</td>
+                    <td>105</td>
+                    <td>30000</td>
+                    <td>50%</td>
+                </tr>
+            </tbody>
+        </table>
+        <form id="order">
+            <input type="number"  placeholder="Enter Quantity" class="field">
+            <select name="stock" id="stock" class="field">
+                <option value="" selected disabled hidden>Choose here</option>
+                <option value="aapl">aapl</option>
+                <option value="tsla">tsla</option>
+            </select>
+            <div id="rnb">
+                <div id="buttons">
+                    <label class="radiocontainer" id="b1"> buy
+                        <input type="radio" name="ordertype">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radiocontainer"> sell
+                        <input type="radio" name="ordertype">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <button type="submit" id="orderbutton">Submit</button>
+            </div>
+        </form>
+        <table>
+            <p>Active Orders</p>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Stock</th>
+                    <th>Quantity</th>
+                    <th>End date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>aapl</td>
+                    <td>100</td>
+                    <td>10.20.2022</td>
+                    <td><input type="checkbox" name="name1" /></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>aapl</td>
+                    <td>100</td>
+                    <td>10.20.2022</td>
+                    <td>hi</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="navigation">-></button>
+
+</body>
+</html>

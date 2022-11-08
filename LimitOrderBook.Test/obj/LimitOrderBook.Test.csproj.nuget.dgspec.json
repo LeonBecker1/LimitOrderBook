@@ -1,0 +1,434 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Test\\LimitOrderBook.Test.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\LimitOrderBook.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\LimitOrderBook.Application.csproj",
+        "projectName": "LimitOrderBook.Application",
+        "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\LimitOrderBook.Application.csproj",
+        "packagesPath": "C:\\Users\\becker\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\becker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/all/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/stable-only/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj",
+        "projectName": "LimitOrderBook.Domain",
+        "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj",
+        "packagesPath": "C:\\Users\\becker\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\becker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/all/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/stable-only/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Infrastructure\\LimitOrderBook.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Infrastructure\\LimitOrderBook.Infrastructure.csproj",
+        "projectName": "LimitOrderBook.Infrastructure",
+        "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Infrastructure\\LimitOrderBook.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\becker\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\becker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/all/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/stable-only/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\LimitOrderBook.Application.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\LimitOrderBook.Application.csproj"
+              },
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "Microsoft.AspNetCore.Components": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.ResponseCompression": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Core": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Test\\LimitOrderBook.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Test\\LimitOrderBook.Test.csproj",
+        "projectName": "LimitOrderBook.Test",
+        "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Test\\LimitOrderBook.Test.csproj",
+        "packagesPath": "C:\\Users\\becker\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\becker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/all/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/stable-only/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\LimitOrderBook.Application.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\LimitOrderBook.Application.csproj"
+              },
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj"
+              },
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Infrastructure\\LimitOrderBook.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Infrastructure\\LimitOrderBook.Infrastructure.csproj"
+              },
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.View\\LimitOrderBook.View.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.View\\LimitOrderBook.View.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.View\\LimitOrderBook.View.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.View\\LimitOrderBook.View.csproj",
+        "projectName": "LimitOrderBook.View",
+        "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.View\\LimitOrderBook.View.csproj",
+        "packagesPath": "C:\\Users\\becker\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.View\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\becker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/all/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itechx/_packaging/stable-only/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\LimitOrderBook.Application.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Application\\LimitOrderBook.Application.csproj"
+              },
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Domain\\LimitOrderBook.Domain.csproj"
+              },
+              "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Infrastructure\\LimitOrderBook.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Infrastructure\\LimitOrderBook.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

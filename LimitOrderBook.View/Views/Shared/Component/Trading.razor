@@ -1,0 +1,324 @@
+﻿@using Microsoft.AspNetCore.SignalR.Client
+@using Microsoft.AspNetCore.Components;
+@using LimitOrderBook.Application.Persistence;
+@using LimitOrderBook.Domain.Entities;
+@inject NavigationManager NavManager;
+@inject IUnitofWork _unitofWork;
+@implements IAsyncDisposable
+
+<div class="tradeWrapper">
+@if (_hubConnection is not null)
+{
+    /*
+    <h1>@teststr</h1>
+    <h1>@NavManager.ToAbsoluteUri("/TradingHub")</h1>
+    <h3>@_stocks.Count()</h3>
+    */
+    <div class="activeOrderNavigation">
+
+        <!--<button onclick="testexec">tessst</button>-->
+
+        @if (_ordersByStock.Count > 0)
+        {
+            <button class="stockNavigation" @onclick="()=>SwitchStock(false)">-</button>
+
+            <div class="activeOrderNavigationCenter">
+           <!-- <h1>_ordersByStock.Count</h1> -->
+            <!--<hi>i</hi>-->
+
+            <!--
+            <ul>
+                foreach ((String, List<Order>) item in _ordersByStock)
+                {
+                    <li>item.Item1</li>
+                    <ol>
+                        foreach (Order x in item.Item2)
+                        {
+                            <li> qty: x.quantity isbuy: x.isBuyOrder price: x.price </li>
+                        }
+                    </ol>
+                }
+            </ul> -->
+
+            <h2 class="currentStockName">@(_ordersByStock[i].Item1)</h2>
+
+            <table class="orderTable">
+                <tr>
+                    <th>Total</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                @foreach (Order order in _ordersByStock[i].Item2)
+                {
+                    <tr>
+                        <td>@(order.price * order.quantity)</td>
+                        <td>@order.quantity</td>
+                        <td>@order.price</td>
+                    </tr>
+                }
+            </table>
+            </div>
+            <button class="stockNavigation" @onclick="() => SwitchStock(true)">+</button>
+        }
+    </div>
+    <div class="userNavigation">
+        <h4 class="userBalance">@_currentUser!.balance</h4>
+        <table class="userPositions">
+            <tr>
+                <th>Stock</th>
+                <th>Quantity</th>
+            </tr>
+            @foreach (Position position in _positionsByUser)
+            {
+                <tr>
+                    <td>@position.underlying.abbreviation</td>
+                    <td>@position.quantity</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="orderIssueForm">
+        <h2>Make an order</h2>
+        <form onsubmit="return false" class="orderIssueForm_form">
+            <div class="labelContainer">
+                <div class="_quantity">
+                    <label for="quantity">Quantity:</label><br>
+                    <input @bind="_newOrder.quantity" type="number" id="quantity" name="quantity"> <!-- specify max and min later on-->
+                </div>
+                <div class="_price">
+                    <label for="price">Price:</label><br>
+                    <input @bind="_newOrder.price" type="number" id="price" name="price">
+                </div>
+            </div>
+           
+            <div class="lowerFormContainer">
+                <div class="stockInput">
+                    <label for="stocks">Select Stock:</label><br>
+                    <select @bind="_newOrder.underlying.abbreviation" name="stocks" id="stocks">
+                        <option value="" disabled selected>Select Stock</option>
+                        @foreach (Stock stock in _stocks)
+                        {
+                            <option value="@stock.abbreviation">@stock.abbreviation</option>
+                        }
+                    </select>
+                </div>
+                <div class="buttons">
+                    <div class="radioButtons">
+                        <label for="buy" class="radiocontainer">Buy
+                            <input @onchange="() => _newOrder.isBuyOrder = true" type="radio" name="orderType" id="buy" value="Buy" />
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="sell" class="radiocontainer">Sell
+                            <input @onchange="() => _newOrder.isBuyOrder = false" type="radio" name="orderType" id="sell" value="Sell" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <button @onclick="IssueNewOrder" id="orderButton">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="userOrders">
+        <h3>Active Orders</h3>
+        <table class="userOrderTable">
+            <tr>
+                <th>Id</th>
+                <th>Stock</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Delete</th>
+            </tr>
+ 
+            @foreach (Order order in _ordersByUser)
+            {
+                <tr>
+                    <td>@order.orderId</td>
+                    <td>@order.underlying.abbreviation</td>
+                    <td>@order.quantity</td>
+                    <td>@order.price</td>
+                    <td><input @onclick="() => DeletePendingOrder(order.orderId)" type="checkbox"/></td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+</div>
+
+@code {
+    private string teststr = "test1";
+    private HubConnection? _hubConnection;
+    private User? _currentUser;
+    private List<Stock> _stocks = new();
+    private List<(String, List<Order>)> _ordersByStock = new();
+    private List<Order> _ordersByUser = new();
+    private List<Position> _positionsByUser = new();
+    private Order _newOrder = null!;
+    private int i = 0;
+
+
+    protected override async Task OnInitializedAsync(){
+        await FetchData();
+        _newOrder = new Order(0, 0, new Stock(""), _currentUser!, false);
+
+        _hubConnection = new HubConnectionBuilder()
+        .WithUrl(NavManager.ToAbsoluteUri("/TradingHub"))
+        .WithAutomaticReconnect()
+        .Build();
+
+        _hubConnection.On<Order>("ReceiveOrderAddition", async (order) =>
+        {
+            teststr = "hahahahahah";
+            String abbreviation = order.underlying.abbreviation;
+            _ordersByStock[0].Item2.Add(new Order(10, 10, new Stock("tetstst"), _currentUser!, true));
+            foreach ((String, List<Order>) element in _ordersByStock){
+                if(element.Item1 == abbreviation){
+                    element.Item2.Add(order);
+                }
+            }
+            await InvokeAsync(StateHasChanged);
+        });
+
+        _hubConnection.On<int>("ReceiveOrderDeletion", async (orderId) =>
+        {
+            foreach((string, List<Order>) element in _ordersByStock){
+                Order? order = element.Item2.FirstOrDefault(o => o.orderId == orderId);
+                if(order is not null){
+                    element.Item2.Remove(order);
+                    break;
+                }
+            }
+
+            await InvokeAsync(StateHasChanged);
+        });
+
+        _hubConnection.On<int, int, uint, uint>("ReceiveOrderMatching", 
+            async (buyOrderId, sellOrderId, buyOrderQuantity, sellOrderQuantity) =>
+        {
+            foreach( var orders in _ordersByStock){
+                Order? order = orders.Item2.FirstOrDefault(o => o.orderId == buyOrderId);
+                if(order is not null){
+                    if(buyOrderQuantity == 0){
+                        orders.Item2.Remove(order);
+                    }
+                    else{
+                        order.quantity = buyOrderQuantity;
+                    }
+                }
+            }
+
+            foreach (var orders in _ordersByStock)
+            {
+                Order? order = orders.Item2.FirstOrDefault(o => o.orderId == sellOrderId);
+                if (order is not null)
+                {
+                    if (sellOrderQuantity == 0)
+                    {
+                        orders.Item2.Remove(order);
+                    }
+                    else
+                    {
+                        order.quantity = sellOrderQuantity;
+                    }
+                }
+            }
+            await InvokeAsync(StateHasChanged);
+        });
+
+        _hubConnection.On<string>("ReceiveTest",
+            async (test) =>
+            {
+                teststr = test;
+                await InvokeAsync(StateHasChanged);
+            });
+
+        _hubConnection.On<Stock>("ReceiveTest2", async (stock) =>
+        {
+            _stocks.Add(stock);
+            await InvokeAsync(StateHasChanged);
+        });
+
+        await _hubConnection.StartAsync();
+    }
+
+    private async Task FetchData(){
+        _currentUser = await _unitofWork.Users.FindUserAsync(24);
+        await FetchAndSortOrdersByStock();
+        await FetchOrdersByUser();
+        _positionsByUser = _currentUser!.portfolio.positions;
+    }
+
+    private async Task FetchAndSortOrdersByStock(){
+        List<Stock> stocks = await _unitofWork.Stocks.GetAllStocksAsync();
+        _stocks = stocks;
+        foreach (Stock stock in stocks)
+        {
+            List<Order> orders = await _unitofWork.Orders.GetAllOrdersByStockAsync(stock.stockId);
+            orders.Sort((o1, o2) =>
+            {
+                if (!o1.isBuyOrder ^ !o2.isBuyOrder)
+                {
+                    return o1.isBuyOrder.CompareTo(o2.isBuyOrder);
+                }
+                else
+                {
+                    return o1.price.CompareTo(o2.price);
+                }
+            });
+
+            _ordersByStock.Add((stock.abbreviation, orders));
+        }
+    }
+
+    private async Task FetchOrdersByUser(){
+        _ordersByUser = await _unitofWork.Orders.GetAllOrdersByIssuerAsync(_currentUser!.userId);
+    }
+
+    private async Task IssueNewOrder(){
+
+        if(_hubConnection is not null){
+            Stock stock = await _unitofWork.Stocks.FindByAbbreviationAsync(_newOrder.underlying.abbreviation);
+            Order order = new Order(_newOrder.price, _newOrder.quantity, stock, _currentUser!, _newOrder.isBuyOrder);
+            _newOrder = new Order(0, 0, new Stock(""), _currentUser!, false);
+
+            Order order2 = await _unitofWork.Orders.AddOrderAsync(order);
+            _ordersByUser.Add(order2);
+            await _hubConnection.SendAsync("SendOrderAddition", order);
+        }
+    }
+
+    private async Task DeletePendingOrder(int orderId){
+        if(_hubConnection is not null){
+            await _unitofWork.Orders.DeleteOrderAsync(orderId);
+            _ordersByUser.Remove(_ordersByUser.First(o => o.orderId == orderId));
+            await _hubConnection.SendAsync("SendOrderDeletion", orderId);
+        }
+    }
+
+    private async Task testexec(){
+        teststr = "hello world";
+        await InvokeAsync(StateHasChanged);
+        await _hubConnection!.SendAsync("SendTest", "ghgghhgh");
+    }
+
+   
+
+    private async Task SwitchStock(bool goToNext){
+        if(goToNext){
+            i = (++i) % _ordersByStock.Count();
+        }
+        else{
+            i = (--i) % _ordersByStock.Count();
+        }
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_hubConnection is not null)
+        {
+            await _hubConnection.DisposeAsync();
+        }
+    }
+}
+

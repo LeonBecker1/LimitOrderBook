@@ -1,0 +1,159 @@
+﻿@using Microsoft.AspNetCore.SignalR.Client
+@using Microsoft.AspNetCore.Components;
+@using LimitOrderBook.Application.Persistence;
+@using LimitOrderBook.Domain.Entities;
+@inject NavigationManager NavManager;
+@inject IUnitofWork _unitofWork;
+@implements IAsyncDisposable
+
+
+<h2>Test Component</h2>
+
+<div>
+    <label>
+        Username: <input @bind="userInput" />
+    </label>
+    <label>
+        Message: <input @bind="messageInput" />
+    </label>
+
+    <label>
+        Stock : <input @bind="stock.abbreviation"/>
+    </label>
+    <button @onclick="AddStock" disabled="@(IsConnected == false)">Send stock</button>
+    <button @onclick="Send" disabled="@(IsConnected == false)">Send</button>
+    <ul>
+        @foreach (String msg in messages)
+        {
+            <li>@msg</li>
+        }
+    </ul>
+    <ul>
+        @foreach (Stock stock in stocks)
+        {
+            <li>@stock.stockId</li>
+            <li>@stock.abbreviation</li>
+        }
+    </ul>
+    <ul>
+        @foreach (Order order in orders)
+        {
+            <li>@order.orderId</li>
+            <li>@order.isBuyOrder</li>
+            <li>@order.price</li>
+            <li>@order.underlying</li>
+            <li>@order.quantity</li>
+        }
+    </ul>
+    <ul>
+        @foreach (User user in users)
+        {
+            <li>@user.userId</li>
+            <li>@user.portfolio</li>
+            <li>@user.balance</li>
+            <li>@user.password</li>
+            <li>@user.userName</li>
+        }
+    </ul>
+    <ul>
+        @foreach (Position position in positions)
+        {
+            <li>@position.positionId</li>
+            <li>@position.underlying</li>
+            <li>@position.quantity</li>
+        }
+    </ul>
+    <ul>
+        @foreach(Sale sale in sales){
+            <li>@sale.saleId</li>
+            <li>@sale.buyer</li>
+            <li>@sale.seller</li>
+            <li>@sale.underlying</li>
+        }
+    </ul>
+    <h2>@hmm</h2>
+
+</div>
+
+@code {
+
+    private HubConnection? hubConnection;
+    private List<String> messages = new();
+    private string? userInput;
+    private string? messageInput;
+    private string hmm = "hello";
+    private List<Stock> stocks = new();
+    private List<Order> orders = new();
+    private List<User> users = new();
+    private List<Position> positions = new();
+    private List<Sale> sales = new();
+    private Stock stock = new Stock("");
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await InitializeEntities();
+
+        hubConnection = new HubConnectionBuilder()
+        .WithUrl(NavManager.ToAbsoluteUri("/ChatHub"))
+        .WithAutomaticReconnect()
+        .Build();
+
+        hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+        {
+            string msg = user + ": " + message;
+            messages.Add(msg);
+            InvokeAsync(StateHasChanged);
+        });
+
+        hubConnection.On<Stock>("ReceiveStock", async (stock) =>
+        {
+            Stock stock2 = new Stock("");
+            stock2.abbreviation = stock.abbreviation;
+            await _unitofWork.Stocks.AddStockAsync(stock2);
+            stock.abbreviation = "";
+            stocks.Add(stock2);
+            await InvokeAsync(StateHasChanged);
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    private async Task InitializeEntities(){
+
+        stocks = await _unitofWork.Stocks.GetAllStocksAsync();
+    }
+
+    private async Task AddStock(){
+        if(hubConnection is not null){
+            await hubConnection.SendAsync("SendStock", stock);
+        }
+    }
+
+    private async Task Send()
+    {
+        if (hubConnection is not null)
+        {
+            await hubConnection.SendAsync("SendMessage", userInput, messageInput);
+        }
+    }
+
+    private async Task Send2()
+    {
+        hmm = "world";
+        messages.Add("test");
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public bool IsConnected => hubConnection?.State == HubConnectionState.Connected;
+
+    public async ValueTask DisposeAsync()
+    {
+        if (hubConnection is not null)
+        {
+            await hubConnection.DisposeAsync();
+        }
+    }
+
+
+}

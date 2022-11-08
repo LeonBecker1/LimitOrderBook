@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "LimitOrderBook.Application/1.0.0": {
+        "dependencies": {
+          "LimitOrderBook.Domain": "1.0.0"
+        },
+        "runtime": {
+          "LimitOrderBook.Application.dll": {}
+        }
+      },
+      "LimitOrderBook.Domain/1.0.0": {
+        "runtime": {
+          "LimitOrderBook.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LimitOrderBook.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LimitOrderBook.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

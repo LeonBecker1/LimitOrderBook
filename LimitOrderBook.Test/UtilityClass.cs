@@ -11,6 +11,7 @@ using LimitOrderBook.Application.Exceptions;
 using LimitOrderBook.Domain.Entities;
 using LimitOrderBook.Infrastructure.Services.Matching;
 using Microsoft.AspNetCore.SignalR.Client;
+using LimitOrderBook.Infrastructure.Hubs;
 
 namespace LimitOrderBook.Test;
 
@@ -181,11 +182,8 @@ public static class UtilityClass
     {
         var unitofWork = await GetUnitofWork();
 
-        var hubConnection = new HubConnectionBuilder()
-        .WithUrl("https://localhost:7186/TradingHub\r\n")
-        .WithAutomaticReconnect()
-        .Build();
+        MockHubConnectionWrapper mockHub = new();
 
-        return new MatchingEgine(unitofWork, hubConnection);
+        return new MatchingEgine(unitofWork, mockHub);
     }
 }

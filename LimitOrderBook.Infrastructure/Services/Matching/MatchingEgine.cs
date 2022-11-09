@@ -1,6 +1,7 @@
 ﻿using LimitOrderBook.Application.Persistence;
 using LimitOrderBook.Application.Services.Matching;
 using LimitOrderBook.Domain.Entities;
+using LimitOrderBook.Infrastructure.Hubs;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
@@ -13,13 +14,13 @@ namespace LimitOrderBook.Infrastructure.Services.Matching;
 public class MatchingEgine : IMatchingEngine
 {
 
-    public MatchingEgine(IUnitofWork unitofWork, HubConnection hubConnection)
+    public MatchingEgine(IUnitofWork unitofWork, IHubConnectionWrapper hubConnection)
     {
         _hubConnection = hubConnection;
         _unitofWork    = unitofWork;
     }
 
-    private readonly HubConnection _hubConnection;
+    private readonly IHubConnectionWrapper _hubConnection;
 
     private readonly IUnitofWork _unitofWork;
 

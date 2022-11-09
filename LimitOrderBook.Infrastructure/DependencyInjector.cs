@@ -36,6 +36,8 @@ public static  class DependencyInjector
         services.AddScoped<IOrderRepository, OrderRepository>();
         services.AddScoped<IStockRepository, StockRepository>();
         services.AddScoped<IUnitofWork, UnitofWork>();
+        services.AddScoped<IHubConnectionWrapper, TradingHubConnectionWrapper>();
+        services.AddScoped<IMatchingEngine, MatchingEgine>();
         //services.AddScoped<NavigationManager>();
         //services.AddScoped<IMatchingService, MatchingService>();
         services.AddHostedService<MatchingService>();

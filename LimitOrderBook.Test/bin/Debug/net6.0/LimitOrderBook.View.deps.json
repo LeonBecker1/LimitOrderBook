@@ -874,7 +874,9 @@
       },
       "LimitOrderBook.Application/1.0.0": {
         "dependencies": {
-          "LimitOrderBook.Domain": "1.0.0"
+          "LimitOrderBook.Domain": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection": "6.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "6.0.0"
         },
         "runtime": {
           "LimitOrderBook.Application.dll": {}
@@ -890,6 +892,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
           "LimitOrderBook.Application": "1.0.0",
           "LimitOrderBook.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Components": "6.0.10",
           "Microsoft.AspNetCore.ResponseCompression": "2.2.0",
           "Microsoft.AspNetCore.SignalR.Client": "6.0.10",
           "Microsoft.AspNetCore.SignalR.Core": "1.1.0",

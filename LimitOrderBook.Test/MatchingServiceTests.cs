@@ -2,8 +2,10 @@
 using LimitOrderBook.Domain.Entities;
 using LimitOrderBook.Infrastructure.Persistence;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +13,30 @@ namespace LimitOrderBook.Test;
 
 public class MatchingServiceTests
 {
+
+    [Fact]
+    public async void Test()
+    {
+        var unitofWork = await UtilityClass.GetUnitofWork();
+
+        Stock stock = new Stock("AAPL");
+        Portfolio portfolio = new Portfolio(new List<Position>());
+        User user = new User("Leon", "123456", 100, portfolio);
+        await unitofWork.Stocks.AddStockAsync(stock);
+        await unitofWork.Users.AddUserAsync(user);
+        User user1 = await unitofWork.Users.FindUserAsync(1);
+        Stock stock1 = await unitofWork.Stocks.FindByAbbreviationAsync("AAPL");
+        Order buyOrder = new Order(10, 5, stock1, user1, true);
+        Order sellOrder = new Order(10, 5, stock1, user1, false);
+        await unitofWork.Orders.AddOrderAsync(buyOrder);
+        await unitofWork.Orders.AddOrderAsync(sellOrder);
+        List<Order> orders = await unitofWork.Orders.GetAllOrdersByIssuerAsync(1);
+
+        Assert.NotNull(user1);
+        Assert.NotNull(stock1);
+        Assert.NotNull(orders);
+
+    }
 
     [Fact]
     public async void OrdersFromSameUserDontGetMatched() 
@@ -57,7 +83,6 @@ public class MatchingServiceTests
 
         Order buyOrder = new Order(10, 5, stock1, user2, true);
         Order sellOrder = new Order(20, 5, stock1 , user3, false);
-
         await unitofWork.Orders.AddOrderAsync(buyOrder);
         await unitofWork.Orders.AddOrderAsync(sellOrder);
 
@@ -124,8 +149,10 @@ public class MatchingServiceTests
         await unitofWork.Orders.AddOrderAsync(sellOrder);
 
         await MatchingEngine.MatchOrders();
-        await Assert.ThrowsAsync<QueryException>(() => unitofWork.Orders.GetAllOrdersByIssuerAsync(1));
-        await Assert.ThrowsAsync<QueryException>(() => unitofWork.Orders.GetAllOrdersByIssuerAsync(1));
+        List<Order> orders = await unitofWork.Orders.GetAllOrdersByIssuerAsync(1);
+        List<Order> orders1 = await unitofWork.Orders.GetAllOrdersByIssuerAsync(2);
+        Assert.Equal(0, orders.Count());
+        Assert.Equal(0, orders1.Count());
 
     }
 

@@ -15,13 +15,16 @@ using LimitOrderBook.Application.Persistence;
 using LimitOrderBook.Application.Services.Matching;
 using LimitOrderBook.Infrastructure.Services.Matching;
 using Microsoft.AspNetCore.Components;
+using LimitOrderBook.Infrastructure.Options;
 
 namespace LimitOrderBook.Infrastructure;
 
 public static  class DependencyInjector
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfigurationSection config)
     {
+
+        services.Configure<PasswordOptions>(config.GetSection("PasswordSettings"));
         services.AddResponseCompression(opts =>
         {
             opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(

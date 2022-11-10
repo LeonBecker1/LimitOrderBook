@@ -13,5 +13,7 @@ public interface IUserRepository : IRepository<User>
 
     Task<User> FindUserAsync(int UserId);
 
+    Task<User> FindUserByNameAsync(string userName);
+
     Task<User> AddUserAsync(User user);
 }

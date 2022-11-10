@@ -60,7 +60,8 @@ public class MatchingServiceTests
         await unitofWork.Orders.AddOrderAsync(sellOrder);
 
         await MatchingEngine.MatchOrders();
-        Assert.NotNull(await unitofWork.Orders.GetAllOrdersByIssuerAsync(1));
+        List<Order> orders = await unitofWork.Orders.GetAllOrdersByIssuerAsync(1);
+        Assert.Equal(2, orders.Count);
     }
 
     [Fact]
@@ -87,8 +88,10 @@ public class MatchingServiceTests
         await unitofWork.Orders.AddOrderAsync(sellOrder);
 
         await MatchingEngine.MatchOrders();
-        Assert.NotNull(await unitofWork.Orders.GetAllOrdersByIssuerAsync(1));
-        Assert.NotNull(await unitofWork.Orders.GetAllOrdersByIssuerAsync(2));
+        List<Order> orders  = await unitofWork.Orders.GetAllOrdersByIssuerAsync(1);
+        List<Order> orders1 = await unitofWork.Orders.GetAllOrdersByIssuerAsync(2);
+        Assert.Single(orders);
+        Assert.Single(orders1);
 
     }
 
@@ -120,8 +123,10 @@ public class MatchingServiceTests
         await unitofWork.Orders.AddOrderAsync(sellOrder);
 
         await MatchingEngine.MatchOrders();
-        Assert.NotNull(await unitofWork.Orders.GetAllOrdersByIssuerAsync(1));
-        Assert.NotNull(await unitofWork.Orders.GetAllOrdersByIssuerAsync(2));
+        List<Order> orders = await unitofWork.Orders.GetAllOrdersByIssuerAsync(1);
+        List<Order> orders1 = await unitofWork.Orders.GetAllOrdersByIssuerAsync(2);
+        Assert.Single(orders);
+        Assert.Single(orders1);
     }
 
     [Fact]
@@ -151,20 +156,75 @@ public class MatchingServiceTests
         await MatchingEngine.MatchOrders();
         List<Order> orders = await unitofWork.Orders.GetAllOrdersByIssuerAsync(1);
         List<Order> orders1 = await unitofWork.Orders.GetAllOrdersByIssuerAsync(2);
-        Assert.Equal(0, orders.Count());
-        Assert.Equal(0, orders1.Count());
+        Assert.Empty(orders);
+        Assert.Empty(orders1);
 
     }
 
     [Fact]
     public async void OrderWithBiggerQuantityRemains()
     {
+        var MatchingEngine = await UtilityClass.GetMatchingEngine();
+        var unitofWork = await UtilityClass.GetUnitofWork();
+
+        Stock stock = new Stock("AAPL");
+        Portfolio portfolio = new Portfolio(new List<Position>());
+        User user = new User("Leon", "123456", 100, portfolio);
+        Portfolio portfolio1 = new Portfolio(new List<Position>());
+        User user1 = new User("Bill", "654321", 200, portfolio1);
+        await unitofWork.Stocks.AddStockAsync(stock);
+        await unitofWork.Users.AddUserAsync(user);
+        await unitofWork.Users.AddUserAsync(user1);
+        User user2 = await unitofWork.Users.FindUserAsync(1);
+        User user3 = await unitofWork.Users.FindUserAsync(2);
+        Stock stock1 = await unitofWork.Stocks.FindByAbbreviationAsync("AAPL");
+
+        Order buyOrder = new Order(10, 6, stock1, user2, true);
+        Order sellOrder = new Order(10, 5, stock1, user3, false);
+
+        await unitofWork.Orders.AddOrderAsync(buyOrder);
+        await unitofWork.Orders.AddOrderAsync(sellOrder);
+
+        await MatchingEngine.MatchOrders();
+        List<Order> orders = await unitofWork.Orders.GetAllOrdersByIssuerAsync(1);
+        List<Order> orders1 = await unitofWork.Orders.GetAllOrdersByIssuerAsync(2);
+
+        Assert.Single(orders);
+        Assert.Empty(orders1);
 
     }
 
     [Fact]
     public async void OrderExecutionAffectIssuersBalanceAndPortfolio()
     {
+        var MatchingEngine = await UtilityClass.GetMatchingEngine();
+        var unitofWork = await UtilityClass.GetUnitofWork();
 
+        Stock stock = new Stock("AAPL");
+        Portfolio portfolio = new Portfolio(new List<Position>());
+        User user = new User("Leon", "123456", 100, portfolio);
+        Portfolio portfolio1 = new Portfolio(new List<Position>());
+        User user1 = new User("Bill", "654321", 200, portfolio1);
+        await unitofWork.Stocks.AddStockAsync(stock);
+        await unitofWork.Users.AddUserAsync(user);
+        await unitofWork.Users.AddUserAsync(user1);
+        User user2 = await unitofWork.Users.FindUserAsync(1);
+        User user3 = await unitofWork.Users.FindUserAsync(2);
+        Stock stock1 = await unitofWork.Stocks.FindByAbbreviationAsync("AAPL");
+
+        Order buyOrder = new Order(10, 5, stock1, user2, true);
+        Order sellOrder = new Order(10, 5, stock1, user3, false);
+
+        await unitofWork.Orders.AddOrderAsync(buyOrder);
+        await unitofWork.Orders.AddOrderAsync(sellOrder);
+
+        await MatchingEngine.MatchOrders();
+        User user4 = await unitofWork.Users.FindUserAsync(1);
+        User user5 = await unitofWork.Users.FindUserAsync(2);
+
+        Assert.Equal(50, user4.balance);
+        Assert.Equal(150, user5.balance);
+        Assert.Empty(user4.portfolio.positions);
+        Assert.Equal(10, (int)portfolio.positions[0].quantity);
     }
 }

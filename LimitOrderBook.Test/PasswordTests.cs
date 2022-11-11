@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LimitOrderBook.Test;
@@ -50,6 +51,7 @@ public class PasswordTests
         var passwordVerifyer = UtilityClass.GetPasswordVerifyer();
         string password = "HelloWorld1";
 
-        Assert.False(passwordVerifyer.PasswordIsValid(password));
+        Assert.True(passwordVerifyer.PasswordIsValid(password));
     }
+
 }

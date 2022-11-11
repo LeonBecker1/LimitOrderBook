@@ -12,6 +12,9 @@ using LimitOrderBook.Domain.Entities;
 using LimitOrderBook.Infrastructure.Services.Matching;
 using Microsoft.AspNetCore.SignalR.Client;
 using LimitOrderBook.Infrastructure.Hubs;
+using LimitOrderBook.Infrastructure.Services.Authentication;
+using Microsoft.Extensions.Options;
+using LimitOrderBook.Infrastructure.Options;
 
 namespace LimitOrderBook.Test;
 
@@ -186,4 +189,16 @@ public static class UtilityClass
 
         return new MatchingEgine(unitofWork, mockHub);
     }
+
+    public static PasswordVerifyer GetPasswordVerifyer()
+    {
+        string[] passwordPatterns = { @"[0-9]+", @"[A-Z]+", @"[a-z]+", @".{8,}" };
+        PasswordOptions options = new PasswordOptions(passwordPatterns);
+        IOptions<PasswordOptions> pwOptions = Options.Create(options);
+
+        PasswordVerifyer passwordVerifyer = new PasswordVerifyer(pwOptions);
+        return passwordVerifyer;
+
+    }
+
 }

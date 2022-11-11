@@ -90,4 +90,32 @@ public class UserRepository : Repository<User>, IUserRepository
             throw new QueryException("User with Id " + UserId.ToString() + " does not exist in databse");
         }
     }
+
+    public Task<User> FindUserByNameAsync(string userName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<bool> ContainsUserAsync(string userName)
+    {
+        UserModel? userModel = await _context.Set<UserModel>().FirstOrDefaultAsync(
+                                      user => user.userName == userName);
+
+        return userModel is not null;
+    }
+
+    public async Task<User> GetUserByNameAsync(string userName)
+    {
+        UserModel? userModel = await _context.Set<UserModel>().FirstOrDefaultAsync(
+                                      user => user.userName == userName);
+
+        if(userModel is not null)
+        {
+            return _mapper.Map<User>(userModel);
+        }
+        else
+        {
+            throw new QueryException(userName + " does not exist in database");
+        }
+    }
 }

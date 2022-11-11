@@ -90,3 +90,4 @@ C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Infrastructure\bin\De
 C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Infrastructure\bin\Debug\net6.0\Microsoft.AspNetCore.Components.dll
 C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Infrastructure\bin\Debug\net6.0\Microsoft.AspNetCore.Metadata.dll
 C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Infrastructure\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.Infrastructure\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll

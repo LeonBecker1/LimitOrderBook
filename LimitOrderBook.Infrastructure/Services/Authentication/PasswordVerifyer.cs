@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LimitOrderBook.Infrastructure.Services.Authentication;
@@ -20,6 +21,15 @@ public class PasswordVerifyer : IPasswordVerifyer
 
     public bool PasswordIsValid(string password)
     {
-        throw new NotImplementedException();
+        bool isValid = true;
+
+        foreach (string pattern in _passwordOptions.passwordPatterns)
+        {
+            Regex regex = new Regex(pattern);
+           
+            isValid &= regex.IsMatch(password);
+        }
+
+        return isValid;
     }
 }

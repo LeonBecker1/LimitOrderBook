@@ -16,4 +16,8 @@ public interface IUserRepository : IRepository<User>
     Task<User> FindUserByNameAsync(string userName);
 
     Task<User> AddUserAsync(User user);
+
+    Task<bool> ContainsUserAsync(string userName);
+
+    Task<User> GetUserByNameAsync(string userName);
 }

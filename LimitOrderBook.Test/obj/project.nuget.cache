@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kdf+9eQggTXAsGUkPqTcXg5BIhY+LW/21svU6XvLfP0cVSq+UqLj0hxO0VwSF4ef5OQNBm2W9CRVkfOGC96c7A==",
+  "dgSpecHash": "g844gA9yU4Y7OIGgzGILU3pntr2fB7OvZlXOE0qosbgoRfrSWr6lOgwurmR+wlKlM2AEr6j6Y+zJRdfXSCjbqA==",
   "success": true,
   "projectFilePath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Test\\LimitOrderBook.Test.csproj",
   "expectedPackageFiles": [
@@ -35,7 +35,7 @@
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.10\\microsoft.entityframeworkcore.sqlserver.6.0.10.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
-    "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.0\\microsoft.extensions.configuration.6.0.0.nupkg.sha512",
+    "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.0\\microsoft.extensions.configuration.binder.7.0.0.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.configuration.commandline\\6.0.0\\microsoft.extensions.configuration.commandline.6.0.0.nupkg.sha512",

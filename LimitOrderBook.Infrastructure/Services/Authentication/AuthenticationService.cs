@@ -20,29 +20,34 @@ public class AuthenticationService : IAuthenticationService
     public AuthenticationService(IPasswordVerifyer passwordVerifyer, IUnitofWork unitofWork)
     {
         _passwordVerifyer = passwordVerifyer;
-        _unitofWork       = unitofWork;
+        _unitofWork = unitofWork;
     }
 
     public async Task AuthenticateLogin(string userName, string password)
     {
-        try
+        if (!await _unitofWork.Users.ContainsUserAsync(userName))
         {
-            User user = await _unitofWork.Users.FindUserByNameAsync(userName);
-            if(user.userName != userName)
-            {
-                throw new ApplicationException("User " + userName +
-                                               " has different password");
-            }
+            throw new AuthenticationException(userName + " is not a registered user");
         }
-        catch (QueryException)
+
+        User user = await _unitofWork.Users.FindUserByNameAsync(userName);
+
+        if (user.password != password)
         {
-            throw new AuthenticationException("User with userName " + userName
-                                              + " does not exist in database");
+            throw new AuthenticationException(userName + " uses different password");
         }
     }
 
-    public Task AuthenticateRegister(string userName, string password)
+    public async Task AuthenticateRegister(string userName, string password)
     {
-        
+        if (!_passwordVerifyer.PasswordIsValid(password))
+        {
+            throw new AuthenticationException(password + " has insuficient complexity");
+        }
+
+        if (await _unitofWork.Users.ContainsUserAsync(userName))
+        {
+            throw new AuthenticationException(userName + " is already a registered user");
+        }
     }
 }

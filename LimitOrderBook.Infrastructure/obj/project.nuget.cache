@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "l+6phW/qBUuV6gCCSoH7rLn88iCAV+bHVW2+KEGDMp8u+8k7DwpYhpJOjepVIl5p/3WdmNsB4yFPqjvbZ8MjYg==",
+  "dgSpecHash": "vDoT2u2KA9E98noRDBMfoV8fxHgtYwoscBLnUuFosA4Iv2iTogpfkEzefnJI6eGwXpMw8rmPv+/BTByY8qiFVQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\becker\\source\\repos\\LimitOrderBook\\LimitOrderBook.Infrastructure\\LimitOrderBook.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -35,6 +35,7 @@
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.10\\microsoft.entityframeworkcore.tools.6.0.10.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
+    "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.0\\microsoft.extensions.configuration.binder.7.0.0.nupkg.sha512",
     "C:\\Users\\becker\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.1\\microsoft.extensions.dependencyinjection.6.0.1.nupkg.sha512",

@@ -8,7 +8,7 @@ namespace LimitOrderBook.Application.Services.Authentication;
 
 public interface IAuthenticationService
 {
-    Task AuthenticateLogin(string password);
+    Task AuthenticateLogin(string userName, string password);
 
     Task AuthenticateRegister(string userName, string password);
 }

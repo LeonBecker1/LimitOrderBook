@@ -21,7 +21,7 @@ namespace LimitOrderBook.Infrastructure;
 
 public static  class DependencyInjector
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfigurationSection config)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager config)
     {
 
         services.Configure<PasswordOptions>(config.GetSection("PasswordSettings"));

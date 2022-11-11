@@ -92,3 +92,10 @@ C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0
 C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0\Microsoft.Extensions.Configuration.UserSecrets.dll
 C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0\Microsoft.Extensions.Hosting.dll
 C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\obj\Debug\net6.0\scopedcss\Views\Shared\Component\Trading.razor.rz.scp.css
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\becker\source\repos\LimitOrderBook\LimitOrderBook.View\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll

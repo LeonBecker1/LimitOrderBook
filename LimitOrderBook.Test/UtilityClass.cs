@@ -201,4 +201,11 @@ public static class UtilityClass
 
     }
 
+    public static async Task<AuthenticationService> GetAuthenticationServiceAsync()
+    {
+        PasswordVerifyer pwVerifyer = GetPasswordVerifyer();
+        UnitofWork unitofWork = await GetUnitofWork();
+        return new AuthenticationService(pwVerifyer, unitofWork);
+    }
+
 }

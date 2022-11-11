@@ -91,9 +91,21 @@ public class UserRepository : Repository<User>, IUserRepository
         }
     }
 
-    public Task<User> FindUserByNameAsync(string userName)
+    public async Task<User> FindUserByNameAsync(string userName)
     {
-        throw new NotImplementedException();
+        UserModel? userModel = await _context.Set<UserModel>().FirstOrDefaultAsync(
+                                      user => user.userName == userName);
+
+        if(userModel is not null)
+        {
+            return _mapper.Map<User>(userModel);
+        }
+        else
+        {
+            throw new QueryException("user with name " + userName + " does not " +
+                                     "exist in database");
+        }
+
     }
 
     public async Task<bool> ContainsUserAsync(string userName)

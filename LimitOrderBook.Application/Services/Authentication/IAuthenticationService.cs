@@ -11,4 +11,6 @@ public interface IAuthenticationService
     Task AuthenticateLogin(string userName, string password);
 
     Task AuthenticateRegister(string userName, string password);
+
+    Task PerformRegistration(string userName, string password);
 }

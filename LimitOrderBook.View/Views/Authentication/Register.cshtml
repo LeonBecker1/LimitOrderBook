@@ -1,1 +1,7 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @(await Html.RenderComponentAsync<LimitOrderBook.View.Views.Shared.Component.Register>(RenderMode.ServerPrerendered))
+</div>

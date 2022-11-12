@@ -16,6 +16,8 @@ using LimitOrderBook.Application.Services.Matching;
 using LimitOrderBook.Infrastructure.Services.Matching;
 using Microsoft.AspNetCore.Components;
 using LimitOrderBook.Infrastructure.Options;
+using LimitOrderBook.Application.Services.Authentication;
+using LimitOrderBook.Infrastructure.Services.Authentication;
 
 namespace LimitOrderBook.Infrastructure;
 
@@ -44,6 +46,8 @@ public static  class DependencyInjector
         //services.AddScoped<NavigationManager>();
         //services.AddScoped<IMatchingService, MatchingService>();
         services.AddHostedService<MatchingService>();
+        services.AddScoped<IPasswordVerifyer, PasswordVerifyer>();
+        services.AddScoped<IAuthenticationService, AuthenticationService>();
         return services;
     }
 }

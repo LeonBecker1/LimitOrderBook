@@ -1,26 +1,61 @@
-﻿<div class="registerfield">
+﻿@using LimitOrderBook.Application.Services.Authentication
+@using LimitOrderBook.Application.Exceptions;
+@inject IAuthenticationService _authenticationService;
+@inject NavigationManager Navmanager;
+
+
+<div class="registerfield">
     <div id="register">
         <div id="options">
-            <a href="" class=""><p>Login</p></a>
-            <p>Register</p>
+            <p @onclick="() => Navmanager.NavigateTo(register, true)">Register</p>
+            <p>Login</p>
         </div>
-        <form action="" method="POST" id="registerform">
+        <div id="registerform">
             <div id="form">
                 <div class="field">
                     <label for="">Username</label>
-                    <input type="text" name="Username" id="">
+                    <input type="text" name="Username" id="" @bind="@userName">
                 </div>
                 <div class="field">
                     <label for="">Password</label>
-                    <input type="text" name="Password" id="">
+                    <input type="text" name="Password" id="" @bind="@password">
                 </div>
             </div>
-            <button type="submit" id="submit">Register</button>
-        </form>
+            <p style="color:#ff1b4d;">@authenticationError</p>
+            <button id="submit" @onclick="SubmitDetails">Login</button>
+
+        </div>
+
         <!--<button id="guest">Enter as a guest</button> -->
     </div>
 </div>
 
 @code {
+    private string userName = "";
+    private string password = "";
+    private string authenticationError = "";
+    private string register = "/authentication/register";
 
+    public async Task SubmitDetails()
+    {
+        if(await InputIsValid()){
+            Navmanager.NavigateTo("/trade");
+        }
+    }
+
+    private async Task<bool> InputIsValid()
+    {
+        bool isValid = true;
+        try
+        {
+            await _authenticationService.AuthenticateLogin(userName, password);
+        }
+        catch (AuthenticationException e)
+        {
+            authenticationError = e.Message;
+            isValid = false;
+        }
+
+        return isValid;
+    }
 }

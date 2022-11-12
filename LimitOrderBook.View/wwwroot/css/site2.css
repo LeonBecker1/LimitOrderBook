@@ -56,6 +56,7 @@ thead {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0 3px 6px #00000030;
 }
 
 #quantity, #price, #stocks {
@@ -220,11 +221,13 @@ thead {
 
 .stockNavigation {
     background-color: #0db8de00;
-    color: #fff;
+    color: #1bff76;
+    font-size: 32px; 
+    justify-content: center; 
     cursor: pointer;
     width: 40px;
     height: 40px; 
-    border: 1px solid #1bff76;
+    border: 2px solid #1bff76;
 }
 
 .stockInput{

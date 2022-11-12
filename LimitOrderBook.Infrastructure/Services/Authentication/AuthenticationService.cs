@@ -50,4 +50,12 @@ public class AuthenticationService : IAuthenticationService
             throw new AuthenticationException(userName + " is already a registered user");
         }
     }
+
+    public async Task PerformRegistration(string userName, string password)
+    {
+        Portfolio portfolio = new Portfolio(new List<Position>());
+        User user = new User(userName, password, 5000, portfolio);
+
+        await _unitofWork.Users.AddUserAsync(user);
+    }
 }

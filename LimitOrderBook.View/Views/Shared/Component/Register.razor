@@ -1,5 +1,64 @@
-﻿<h3>Register</h3>
+﻿@using LimitOrderBook.Application.Services.Authentication
+@using LimitOrderBook.Application.Exceptions;
+@using LimitOrderBook.Application.Persistence;
+@inject IAuthenticationService _authenticationService; 
+@inject NavigationManager Navmanager;
+@inject IUnitofWork _unitofWork;
+
+<div class="registerfield">
+    <div id="register">
+        <div id="options">
+            <p>Register</p>
+            <p @onclick="() => Navmanager.NavigateTo(login, true)">Login</p>
+        </div>
+        <div id="registerform">
+            <div id="form">
+                <div class="field">
+                    <label for="">Username</label>
+                    <input type="text" name="Username" id="" @bind="@userName">
+                </div>
+                <div class="field">
+                    <label for="">Password</label>
+                    <input type="text" name="Password" id="" @bind="@password">
+                </div>
+            </div>
+            <p style="color:#ff1b4d;">@authenticationError</p>
+            <button id="submit" @onclick="SubmitDetails">Register</button>
+
+        </div>
+
+        <!--<button id="guest">Enter as a guest</button> -->
+    </div>
+</div>
 
 @code {
+    private string userName = "";
+    private string password = "";
+    private string authenticationError = "";
+    private string login = "/authentication/login";
 
+    public async Task SubmitDetails(){
+        if(await InputIsValid()){
+            Navmanager.NavigateTo("/trade");
+        } 
+    }
+
+    private async Task<bool> InputIsValid(){
+        bool isValid = true;
+        try
+        {
+            await _authenticationService.AuthenticateRegister(userName, password);
+        }
+        catch (AuthenticationException e)
+        {
+            authenticationError = e.Message;
+            isValid = false;
+        }
+
+        if(isValid){
+            await _authenticationService.PerformRegistration(userName, password);
+        }
+
+        return isValid;
+    }
 }

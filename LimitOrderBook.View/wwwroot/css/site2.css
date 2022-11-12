@@ -20,6 +20,10 @@ table {
     width: 800px;
 }
 
+.orderTable tr {
+    background-color:#25252d;
+}
+
 td, th {
     font-weight: 200;
     padding: 15px 55px;
@@ -33,8 +37,12 @@ td {
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.308);
 }
 
-tr:nth-child(2n) {
+tr{
     background-color: #25252d;
+}
+
+tr:nth-child(2n) {
+    background-color: #222;
 }
 
 thead {
@@ -66,17 +74,23 @@ thead {
 
 .orderIssueForm {
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.308);
+    background-color: #25252d;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4s08);
+}
+
+.orderIssueFormHeadline{
+    padding-top: 15px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
 }
 
 .orderIssueForm_form {
-    background-color: #25252d;
     display: flex;
     column-gap: 10px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 800px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.308);
 }
 
 .radiocontainer {
@@ -92,15 +106,36 @@ thead {
     user-select: none;
 }
 
+.currentStockName{
+    color: #4dfff4;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+}
+
+.stockswitchwrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
 .labelContainer{
     display: flex;
     justify-content: space-between;
 }
 
+.labelContainer div{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
 .lowerFormContainer{
     margin-top: 30px; 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.lowerFormContainer div{
+
 }
 
 
@@ -166,6 +201,7 @@ thead {
     display: flex;
     flex-direction: column;
     padding-left: 40px;
+    align-self: flex-end;
 }
 
 #orderButton {
@@ -183,17 +219,20 @@ thead {
 }
 
 .stockNavigation {
-    padding: 15px;
     background-color: #0db8de00;
-    border-radius: 50%;
-    border: 1px #fff solid;
     color: #fff;
     cursor: pointer;
+    width: 40px;
+    height: 40px; 
+    border: 1px solid #1bff76;
+}
+
+.stockInput{
+    padding-right: 100px;
 }
 
 .activeOrderNavigation {
     display: flex;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.308);
 }
 
 ._quantity, ._price{

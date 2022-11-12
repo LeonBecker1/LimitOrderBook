@@ -19,6 +19,14 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudFxDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/becker/source/repos/LimitOrderBook/LimitOrderBook.View/Views/Shared/Component/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudFxMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/becker/source/repos/LimitOrderBook/LimitOrderBook.View/Views/Shared/Component/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudFxSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/becker/source/repos/LimitOrderBook/LimitOrderBook.View/Views/Shared/Component/Test2.razor]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudFxUZXN0Mi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -30,6 +38,14 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/becker/source/repos/LimitOrderBook/LimitOrderBook.View/Views/Shared/Component/Trading.razor]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudFxUcmFkaW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-mvzaf1fulx
+
+[C:/Users/becker/source/repos/LimitOrderBook/LimitOrderBook.View/Views/Authentication/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/becker/source/repos/LimitOrderBook/LimitOrderBook.View/Views/Authentication/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/becker/source/repos/LimitOrderBook/LimitOrderBook.View/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=

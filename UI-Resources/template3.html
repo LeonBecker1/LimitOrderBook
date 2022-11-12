@@ -8,25 +8,27 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="register">
-        <div id="options">
-            <a href=""><p>Login</p></a>
-            <a href=""><p>Register</p></a>
-        </div>
-        <form action=""  method="POST" id="formfield">
-            <div id="form">
-                <div class="field">
-                    <label for="">Username</label>
-                    <input type="text" name="Username" id="">
-                </div>
-                <div class="field">
-                    <label for="">Password</label>
-                    <input type="text" name="Password" id="">
-                </div>
+    <div class="registerfield">
+        <div id="register">
+            <div id="options">
+                <a href="" class=""><p>Login</p></a>
+                <p>Register</p>
             </div>
-            <button type="submit" id="submit">Register</button>
-        </form>
-        <button id="guest">Enter as a guest</button>
+            <form action=""  method="POST" id="registerform">
+                <div id="form">
+                    <div class="field">
+                        <label for="">Username</label>
+                        <input type="text" name="Username" id="">
+                    </div>
+                    <div class="field">
+                        <label for="">Password</label>
+                        <input type="text" name="Password" id="">
+                    </div>
+                </div>
+                <button type="submit" id="submit">Register</button>
+            </form>
+            <!--<button id="guest">Enter as a guest</button> -->
+        </div>
     </div>
 </body>
 </html>

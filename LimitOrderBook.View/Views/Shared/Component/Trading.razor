@@ -20,7 +20,6 @@
 
         @if (_ordersByStock.Count > 0)
         {
-            <button class="stockNavigation" @onclick="()=>SwitchStock(false)">-</button>
 
             <div class="activeOrderNavigationCenter">
            <!-- <h1>_ordersByStock.Count</h1> -->
@@ -40,7 +39,12 @@
                 }
             </ul> -->
 
-            <h2 class="currentStockName">@(_ordersByStock[i].Item1)</h2>
+
+             <h2 class="currentStockName">@(_ordersByStock[i].Item1)</h2>
+             <div class="stockswitchwrapper">
+                <button class="stockNavigation" @onclick="()=>SwitchStock(true)">+</button>
+                <button class="stockNavigation" @onclick="()=>SwitchStock(true)">+</button>
+            </div>
 
             <table class="orderTable">
                 <tr>
@@ -50,19 +54,27 @@
                 </tr>
                 @foreach (Order order in _ordersByStock[i].Item2)
                 {
+  
+                        string styleString;
+                        if(order.isBuyOrder){
+                            styleString = "#1bff76";
+                        }
+                        else{
+                            styleString = "#ff1b4d";
+                        }
+                
                     <tr>
                         <td>@(order.price * order.quantity)</td>
                         <td>@order.quantity</td>
-                        <td>@order.price</td>
+                        <td style="color:@styleString;">@order.price</td>
                     </tr>
                 }
             </table>
             </div>
-            <button class="stockNavigation" @onclick="() => SwitchStock(true)">+</button>
         }
     </div>
     <div class="userNavigation">
-        <h4 class="userBalance">@_currentUser!.balance</h4>
+        <h4 class="userBalance"> Current balance: @_currentUser!.balance</h4>
         <table class="userPositions">
             <tr>
                 <th>Stock</th>
@@ -78,7 +90,7 @@
         </table>
     </div>
     <div class="orderIssueForm">
-        <h2>Make an order</h2>
+        <h2  class="orderIssueFormHeadline">Issue Order</h2>
         <form onsubmit="return false" class="orderIssueForm_form">
             <div class="labelContainer">
                 <div class="_quantity">
@@ -93,7 +105,6 @@
            
             <div class="lowerFormContainer">
                 <div class="stockInput">
-                    <label for="stocks">Select Stock:</label><br>
                     <select @bind="_newOrder.underlying.abbreviation" name="stocks" id="stocks">
                         <option value="" disabled selected>Select Stock</option>
                         @foreach (Stock stock in _stocks)

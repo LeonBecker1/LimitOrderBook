@@ -48,6 +48,7 @@ public class Authenticationtests
       
     }
 
+    [Fact]
     public async void RegistrationWithUnavailableUserNameFails()
     {
         var authService = await UtilityClass.GetAuthenticationServiceAsync();
